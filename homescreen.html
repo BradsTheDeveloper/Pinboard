@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pinboard</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+  </head>
+  
+  <body>
+    <h1><label id="lblGreetings"></label></h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+
+    <label id="lblGreetings"></label>
+  </body>
+
+  <script> // Good Morning/Afternoon/Evening
+    var myDate = new Date();
+    var hrs = myDate.getHours();
+
+    var greet;
+
+      if (hrs < 12)
+          greet = 'Good Morning';
+      else if (hrs >= 12 && hrs <= 17)
+          greet = 'Good Afternoon';
+      else if (hrs >= 17 && hrs <= 24)
+          greet = 'Good Evening';
+
+      document.getElementById('lblGreetings').innerHTML =
+          '<b>' + greet + '</b>, '; // + username;
+    
+  </script> 
+
+      <script> // Required files
+        // You can also require other files to run in this process
+        require('./renderer.js')
+      </script>
+  </body>
+</html>

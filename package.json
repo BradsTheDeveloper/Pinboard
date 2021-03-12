@@ -1,0 +1,21 @@
+{
+  "name": "pinboard",
+  "productName": "pinboard",
+  "description": "A new but familiar perspective of productivity",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "bradleyaustin",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "bulma": "^0.9.2",
+    "electron-prompt": "^1.6.1",
+    "parse": "^3.1.0"
+  },
+  "devDependencies": {
+    "electron": "^11.2.3"
+  },
+  "license": "ISC"
+}
