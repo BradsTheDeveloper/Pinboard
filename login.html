@@ -7,8 +7,54 @@
   </head>
 
   <body>
-    <h1 class="centre"; padding-bottom: 50px>Welcome to Pinboard</h1>
-    <h2 class="centre">Log in or sign up to get started</p>
+
+    <script>
+      
+      const customTitlebar = require('custom-electron-titlebar');
+
+      new customTitlebar.Titlebar({
+        backgroundColor: customTitlebar.Color.fromHex('#000e36')
+      });
+
+    </script>
+    <h1 class="centre centreText fadein" style="line-height:60px;">Welcome to Pinboard</h1>
+    <h2 class="centre centreText fadein" style="opacity:0;animation-delay:3s;animation-fill-mode:forwards;line-height:60px;">Log in or sign up to get started</p>
+
+    <div class="centre"; style="line-height:20px;height:50px;width:50%;margin:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"> <!-- Form -->
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email</label><br>
+        <input type="text" id="email" name="email"><br><br>
+        <label for="password">Password</label><br>
+        <input type="password" id="password" name="password"><br><br>
+    </div>
+
+    <button onClick="goToHomescreen()" value="Login"></button>
+
+    <script> // 1st attempt at saving details
+        function goToHomescreen() {
+        location.href='./homescreen.html';
+      }
+    </script>
+
+    <script> // 2nd attempt at saving details
+      function setLoginDetails2() { 
+        var name_var = document.getElementById("name").value;
+        var email_var = document.getElementById("email").value;
+        var password_var = document.getElementById("password").value;
+      
+        localStorage.setItem('name_var');
+        localStorage.setItem('email_var');
+        localStorage.setItem('password_var');
+
+        var isUserLoggedIn = true;
+      }
+
+      if (isUserLoggedIn = true)
+        
+    </script>
+
+
 
 
   </body>

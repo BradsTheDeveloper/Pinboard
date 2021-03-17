@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap');
+
+body {
+    background-color: rgb(0, 14, 54);
+    color: white;
+}
 
 h1 {
     font-family: 'Playfair Display', serif;
@@ -7,10 +12,70 @@ h1 {
 }
 
 h2 {
-        font-family: 'Open Sans Condensed', serif;
-        font-size: 20px;
+    font-family: 'Karla', serif;
+    font-size: 20px;
+}
+
+h3 {
+  font-family: 'Karla', serif;
 }
 
 .centre {
+    margin: auto;
+}
+
+.centreText {
     text-align: center;
+}
+
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  /* The element to apply the animation to */
+.fadein {
+    animation-name: fadein;
+    animation-duration: 3s;
+  }
+
+input[type=text], input[type=password] {
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: #3cbc8d00;
+    color: white;
+    height: 30px;
+    outline: none;
+    font-family: 'Karla', serif;
+    width: 300px;
+    text-align: center;
+  }
+
+input[type=button], input[type=submit], input[type=reset], button {
+    background-color: #ffffff;
+    border: 2px solid white;
+    border-radius: 100px;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Karla', serif;
+    
+  }
+
+  input[type=text]:focus {
+    border: none;
+    border-bottom: 2px solid rgb(164, 198, 250);
+    outline: none;
+  }
+
+.leftPadding{
+  padding: 0px 10px 0px 10px;
+}
+
+hr.rounded {
+  border-top: 3px solid #bbb;
+  border-radius: 5px;
+  padding: 0px 10px 0px 10px
 }

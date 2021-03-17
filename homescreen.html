@@ -2,21 +2,35 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Pinboard</title>
+    <title>Pinboard - Home</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
-  
-  <body>
-    <h1><label id="lblGreetings"></label></h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
 
-    <label id="lblGreetings"></label>
-  </body>
+  <body>
+    <h1 class="leftPadding"><label id="lblGreetings"></label></h1>
+    <h3 class="leftPadding" style="line-height:25px;">
+      <div id="quoteDisplay">
+        <!-- Quotes will go here -->
+      </div>
+    <h3>
+    
+      <hr class="rounded">
+
+    <script>
+      var quotes = [
+        '“Luck is only important in so far as getting the chance to sell yourself at the right moment. After that, you’ve got to have talent and know how to use it.” — Frank Sinatra',
+        '“If you spend too much time thinking about a thing, you’ll never get it done.” — Bruce Lee',
+        '“It’s not knowing what to do; it’s doing what you know.” — Tony Robbins',
+      ]
+
+      var randomNumber = Math.floor(Math.random() * (quotes.length));
+      document.getElementById('quoteDisplay').innerHTML = quotes[randomNumber];
+    </script>
 
   <script> // Good Morning/Afternoon/Evening
+    myStorage = window.localStorage;
+    usersName = localStorage.getItem('name_var');
+
     var myDate = new Date();
     var hrs = myDate.getHours();
 
@@ -30,7 +44,7 @@
           greet = 'Good Evening';
 
       document.getElementById('lblGreetings').innerHTML =
-          '<b>' + greet + '</b>, '; // + username;
+          '<b>' + greet + '</b>, '; + '<b>' + usersName + '</b>';
     
   </script> 
 
