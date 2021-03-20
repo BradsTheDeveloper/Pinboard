@@ -59,6 +59,7 @@
             .then((userCredential) => {
                 // Signed in 
                 var user = userCredential.user;
+                goToHomescreen();
                 // ...
             })
             .catch((error) => {
