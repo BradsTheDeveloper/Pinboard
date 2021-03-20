@@ -2,11 +2,33 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Pinboard - Login</title>
+    <title>Pins - Login</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
 
   <body>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDpemDHTHP0p90J1Y7cPtP8VXh2hIBGq10",
+        authDomain: "pinboard-f0e52.firebaseapp.com",
+        projectId: "pinboard-f0e52",
+        storageBucket: "pinboard-f0e52.appspot.com",
+        messagingSenderId: "229860657808",
+        appId: "1:229860657808:web:dc46ed4fd37dc412202615",
+        measurementId: "G-H63H28GYP2"
+      };
+      firebase.initializeApp(config);
+
+      const auth=firebase.auth();
+      const db=firebase.firestore();
+      
+    </script>
+
 
     <script>
       
@@ -17,42 +39,62 @@
       });
 
     </script>
-    <h1 class="centre centreText fadein" style="line-height:60px;">Welcome to Pinboard</h1>
+
+    <h1 class="centre centreText fadein" style="line-height:60px;">Welcome to Pins</h1>
     <h2 class="centre centreText fadein" style="opacity:0;animation-delay:3s;animation-fill-mode:forwards;line-height:60px;">Log in or sign up to get started</p>
 
     <div class="centre"; style="line-height:20px;height:50px;width:50%;margin:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"> <!-- Form -->
-        <label for="name">Name</label><br>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="email">Email</label><br>
-        <input type="text" id="email" name="email"><br><br>
-        <label for="password">Password</label><br>
-        <input type="password" id="password" name="password"><br><br>
+      Name <br><br> <input id="namebox" type="text"></input> <br><br>
+      Email <br><br> <input id="emailbox" type="text"></input> <br><br>
+      Password <br><br> <input id="passwordbox" type="password"></input> <br><br>
+
+      <button id="login">Login</button>
     </div>
 
-    <button onClick="goToHomescreen()" value="Login"></button>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
 
-    <script> // 1st attempt at saving details
+    <script id="MainScript">
+      var firebaseConfig = {
+        apiKey: "AIzaSyDpemDHTHP0p90J1Y7cPtP8VXh2hIBGq10",
+        authDomain: "pinboard-f0e52.firebaseapp.com",
+        projectId: "pinboard-f0e52",
+        storageBucket: "pinboard-f0e52.appspot.com",
+        messagingSenderId: "229860657808",
+        appId: "1:229860657808:web:dc46ed4fd37dc412202615",
+        measurementId: "G-H63H28GYP2"
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      var nameV, emailV, passwordV;
+      var isUserLoggedIn = false;
+
+      function Ready(){
+          nameV = document.getElementById('namebox').value;
+          emailV = document.getElementById('emailbox').value;
+          passwordV = document.getElementById('passwordbox').value;
+
+      }
+
+      document.getElementById('login').onclick = function(){
+          Ready();
+          firebase.database().ref('users/'+nameV).set({
+              NameOfUser:nameV,
+              Email:emailV,
+              Password:passwordV
+          });
+      }
+  </script>
+
+    <script>
         function goToHomescreen() {
         location.href='./homescreen.html';
       }
+
     </script>
-
-    <script> // 2nd attempt at saving details
-      function setLoginDetails2() { 
-        var name_var = document.getElementById("name").value;
-        var email_var = document.getElementById("email").value;
-        var password_var = document.getElementById("password").value;
-      
-        localStorage.setItem('name_var');
-        localStorage.setItem('email_var');
-        localStorage.setItem('password_var');
-
-        var isUserLoggedIn = true;
-      }
-
-      if (isUserLoggedIn = true)
         
-    </script>
+    
 
 
 

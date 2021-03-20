@@ -1,6 +1,6 @@
 {
-  "name": "pinboard",
-  "productName": "pinboard",
+  "name": "pins",
+  "productName": "pins",
   "description": "A new but familiar perspective of productivity",
   "keywords": [],
   "main": "./main.js",
@@ -16,7 +16,8 @@
     "parse": "^3.1.0"
   },
   "devDependencies": {
-    "electron": "^11.2.3"
+    "electron": "^11.2.3",
+    "typescript": "^4.2.3"
   },
   "license": "ISC"
 }
