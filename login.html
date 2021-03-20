@@ -8,28 +8,6 @@
 
   <body>
 
-    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDpemDHTHP0p90J1Y7cPtP8VXh2hIBGq10",
-        authDomain: "pinboard-f0e52.firebaseapp.com",
-        projectId: "pinboard-f0e52",
-        storageBucket: "pinboard-f0e52.appspot.com",
-        messagingSenderId: "229860657808",
-        appId: "1:229860657808:web:dc46ed4fd37dc412202615",
-        measurementId: "G-H63H28GYP2"
-      };
-      firebase.initializeApp(config);
-
-      const auth=firebase.auth();
-      const db=firebase.firestore();
-      
-    </script>
-
-
     <script>
       
       const customTitlebar = require('custom-electron-titlebar');
@@ -43,7 +21,7 @@
     <h1 class="centre centreText fadein" style="line-height:60px;">Welcome to Pins</h1>
     <h2 class="centre centreText fadein" style="opacity:0;animation-delay:3s;animation-fill-mode:forwards;line-height:60px;">Log in or sign up to get started</p>
 
-    <div class="centre"; style="line-height:20px;height:50px;width:50%;margin:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"> <!-- Form -->
+    <div class="centre"; style="line-height:20px;height:50px;width:50%;margin:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
       Name <br><br> <input id="namebox" type="text"></input> <br><br>
       Email <br><br> <input id="emailbox" type="text"></input> <br><br>
       Password <br><br> <input id="passwordbox" type="password"></input> <br><br>
@@ -56,51 +34,40 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
 
     <script id="MainScript">
-      var firebaseConfig = {
-        apiKey: "AIzaSyDpemDHTHP0p90J1Y7cPtP8VXh2hIBGq10",
-        authDomain: "pinboard-f0e52.firebaseapp.com",
-        projectId: "pinboard-f0e52",
-        storageBucket: "pinboard-f0e52.appspot.com",
-        messagingSenderId: "229860657808",
-        appId: "1:229860657808:web:dc46ed4fd37dc412202615",
-        measurementId: "G-H63H28GYP2"
-      };
-      firebase.initializeApp(firebaseConfig);
+        var firebaseConfig = {
+          apiKey: "AIzaSyDpemDHTHP0p90J1Y7cPtP8VXh2hIBGq10",
+          authDomain: "pinboard-f0e52.firebaseapp.com",
+          projectId: "pinboard-f0e52",
+          storageBucket: "pinboard-f0e52.appspot.com",
+          messagingSenderId: "229860657808",
+          appId: "1:229860657808:web:dc46ed4fd37dc412202615",
+          measurementId: "G-H63H28GYP2"
+        };
+        firebase.initializeApp(firebaseConfig);
 
-      var nameV, emailV, passwordV;
-      var isUserLoggedIn = false;
+        var nameV, emailV, passwordV;
 
-      function Ready(){
-          nameV = document.getElementById('namebox').value;
-          emailV = document.getElementById('emailbox').value;
-          passwordV = document.getElementById('passwordbox').value;
+        function Ready(){
+            nameV = document.getElementById('namebox').value;
+            emailV = document.getElementById('emailbox').value;
+            passwordV = document.getElementById('passwordbox').value;
+        }
 
-      }
-
-      document.getElementById('login').onclick = function(){
-          Ready();
-          firebase.auth().createUserWithEmailAndPassword(emailV, passwordV)
+        document.getElementById('login').onclick = function(){
+            Ready();
+            firebase.auth().createUserWithEmailAndPassword(emailV, passwordV)
             .then((userCredential) => {
-              // Signed in 
-              var user = userCredential.user;
-              var userProfile = firebase.auth().currentUser;
-              userProfile.updateProfile({
-                displayName: nameV
-              }).then(function() {
-                goToHomescreen()
-                // Update successful.
-              }).catch(function(error) {
-                // An error happened.
-              });
-              // ...
+                // Signed in 
+                var user = userCredential.user;
+                // ...
             })
             .catch((error) => {
-              var errorCode = error.code;
-              var errorMessage = error.message;
-              // ..
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ..
             });
-      }
-  </script>
+        }
+    </script>
 
     <script>
         function goToHomescreen() {
@@ -108,11 +75,6 @@
       }
 
     </script>
-        
-    
-
-
-
 
   </body>
 

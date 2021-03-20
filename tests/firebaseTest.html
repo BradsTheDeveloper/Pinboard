@@ -34,15 +34,20 @@
                 nameV = document.getElementById('namebox').value;
                 emailV = document.getElementById('emailbox').value;
                 passwordV = document.getElementById('passwordbox').value;
-
             }
 
             document.getElementById('login').onclick = function(){
                 Ready();
-                firebase.database().ref('users/'+nameV).set({
-                    NameOfUser:nameV,
-                    Email:emailV,
-                    Password:passwordV
+                firebase.auth().createUserWithEmailAndPassword(emailV, passwordV)
+                .then((userCredential) => {
+                    // Signed in 
+                    var user = userCredential.user;
+                    // ...
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // ..
                 });
             }
         </script>
