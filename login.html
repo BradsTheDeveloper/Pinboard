@@ -79,11 +79,26 @@
 
       document.getElementById('login').onclick = function(){
           Ready();
-          firebase.database().ref('users/'+nameV).set({
-              NameOfUser:nameV,
-              Email:emailV,
-              Password:passwordV
-          });
+          firebase.auth().createUserWithEmailAndPassword(emailV, passwordV)
+            .then((userCredential) => {
+              // Signed in 
+              var user = userCredential.user;
+              var userProfile = firebase.auth().currentUser;
+              userProfile.updateProfile({
+                displayName: nameV
+              }).then(function() {
+                goToHomescreen()
+                // Update successful.
+              }).catch(function(error) {
+                // An error happened.
+              });
+              // ...
+            })
+            .catch((error) => {
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // ..
+            });
       }
   </script>
 
