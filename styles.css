@@ -2,8 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap');
 
 body {
-    background-color: rgb(0, 14, 54);
-    color: white;
+  color: white;
 }
 
 h1 {
@@ -20,8 +19,13 @@ h3 {
   font-family: 'Karla', serif;
 }
 
-.centre {
-    margin: auto;
+p {
+  font-family: 'Karla', serif;
+}
+
+
+.verticalCentre {
+  padding: 40px 0;
 }
 
 .centreText {
@@ -48,7 +52,7 @@ input[type=text], input[type=password] {
     outline: none;
     font-family: 'Karla', serif;
     width: 300px;
-    text-align: center;
+    text-align: left;
   }
 
 input[type=button], input[type=submit], input[type=reset], button {
@@ -78,4 +82,19 @@ hr.rounded {
   border-top: 3px solid #bbb;
   border-radius: 5px;
   padding: 0px 10px 0px 10px
+}
+
+.whiteBG {
+  background-color: rgb(255, 255, 255);
+}
+
+.bottomCorner{
+  position:absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.buttonSelected {
+  background-color: rgb(24, 72, 204); 
+  color: #ffffff; 
 }

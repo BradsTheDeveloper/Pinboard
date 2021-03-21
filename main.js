@@ -13,7 +13,7 @@ function createWindow () {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('login.html')
+  mainWindow.loadFile('signUp.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

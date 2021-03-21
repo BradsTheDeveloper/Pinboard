@@ -2,9 +2,18 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Pins - Login</title>
+    <title>Pins - Sign Up</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
+
+  <style>
+    body {
+      background-image: url('src/night_logInPic.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+  </style>
 
   <body>
 
@@ -18,16 +27,22 @@
 
     </script>
 
-    <h1 class="centre centreText fadein" style="line-height:60px;">Welcome to Pins</h1>
-    <h2 class="centre centreText fadein" style="opacity:0;animation-delay:3s;animation-fill-mode:forwards;line-height:60px;">Log in or sign up to get started</p>
+    <div class="verticalCentre">
+      <h1 class="fadein leftPadding" style="line-height:20px;">Welcome to Pins</h1>
+      <h2 class="fadein leftPadding" style="opacity:0;animation-delay:2s;animation-fill-mode:forwards;line-height:20px;">Log in or sign up to get started</p>
+      <button class="buttonSelected">Sign Up</button>
+      <button id="loginScreenSelect">Login</button>
+      <br><br>
+      <div class="fadein" style="opacity:0;line-height:20px;height:50px;width:50%;margin:0;animation-delay:3s;animation-fill-mode:forwards;">
+        <!--Name <br><br> <input id="namebox" type="text"></input> <br><br>-->
+        Email <br><br> <input id="emailbox" type="text"></input> <br><br>
+        Password <br><br> <input id="passwordbox" type="password"></input> <br><br>
 
-    <div class="centre"; style="line-height:20px;height:50px;width:50%;margin:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
-      Name <br><br> <input id="namebox" type="text"></input> <br><br>
-      Email <br><br> <input id="emailbox" type="text"></input> <br><br>
-      Password <br><br> <input id="passwordbox" type="password"></input> <br><br>
-
-      <button id="login">Login</button>
+        <button id="signUp">Sign Up</button>
+      </div>
     </div>
+
+    <p class="bottomCorner">Image by <a href="https://pixabay.com/users/felixmittermeier-4397258/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2183637">FelixMittermeier</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2183637">Pixabay</a></p>
 
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
@@ -53,7 +68,7 @@
             passwordV = document.getElementById('passwordbox').value;
         }
 
-        document.getElementById('login').onclick = function(){
+        document.getElementById('signUp').onclick = function(){
             Ready();
             firebase.auth().createUserWithEmailAndPassword(emailV, passwordV)
             .then((userCredential) => {
