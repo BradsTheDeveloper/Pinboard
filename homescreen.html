@@ -6,15 +6,66 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
 
-  <body>
+  <body style="background-color: rgb(0, 14, 54);">
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+
+    <script id="MainScript">
+        var firebaseConfig = {
+          apiKey: "AIzaSyDpemDHTHP0p90J1Y7cPtP8VXh2hIBGq10",
+          authDomain: "pinboard-f0e52.firebaseapp.com",
+          projectId: "pinboard-f0e52",
+          storageBucket: "pinboard-f0e52.appspot.com",
+          messagingSenderId: "229860657808",
+          appId: "1:229860657808:web:dc46ed4fd37dc412202615",
+          measurementId: "G-H63H28GYP2"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        emailV = store.get('emailV')
+        passwordV = store.get('passwordV')
+
+        firebase.auth().signInWithEmailAndPassword(emailV, passwordV)
+          .then((userCredential) => {
+            // Signed in
+            var user = userCredential.user;
+            signedInAlert();
+            // ...
+          })
+          .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            notSignedInAlert();
+          });
+
+          function signedInAlert() {
+            alert("Succesful sign in!");
+          }
+
+          function notSignedInAlert() {
+            alert("Sign in didn't work!");
+          }
+          
+        var userProfile = firebase.auth().currentUser;
+        var usersName, email, photoUrl, uid, emailVerified;
+
+        if (userProfile != null) {
+          usersName = user.displayName;
+        }
+        else {
+          alert("usersName not found!");
+        }
+    </script>
+
+
     <h1 class="leftPadding"><label id="lblGreetings"></label></h1>
     <h3 class="leftPadding" style="line-height:25px;">
       <div id="quoteDisplay">
         <!-- Quotes will go here -->
       </div>
     <h3>
-    
-      <hr class="rounded">
 
     <script>
       var quotes = [
@@ -28,9 +79,6 @@
     </script>
 
   <script> // Good Morning/Afternoon/Evening
-    myStorage = window.localStorage;
-    usersName = localStorage.getItem('name_var');
-
     var myDate = new Date();
     var hrs = myDate.getHours();
 

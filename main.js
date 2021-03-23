@@ -45,3 +45,5 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 
 const Parse = require('parse');
+const Store = require('electron-store');
+Store.initRenderer()

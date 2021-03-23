@@ -49,6 +49,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
 
     <script id="MainScript">
+      
+
         var firebaseConfig = {
           apiKey: "AIzaSyDpemDHTHP0p90J1Y7cPtP8VXh2hIBGq10",
           authDomain: "pinboard-f0e52.firebaseapp.com",
@@ -66,6 +68,9 @@
             // nameV = document.getElementById('namebox').value
             emailV = document.getElementById('emailbox').value;
             passwordV = document.getElementById('passwordbox').value;
+
+            store.set('emailV', emailV);
+            store.set('passwordV', passwordV);
         }
 
         document.getElementById('login').onclick = function(){
