@@ -14,7 +14,8 @@
     "custom-electron-titlebar": "^3.2.6",
     "electron-prompt": "^1.6.1",
     "electron-store": "^7.0.2",
-    "parse": "^3.1.0"
+    "parse": "^3.1.0",
+    "titlebar": "^1.4.0"
   },
   "devDependencies": {
     "electron": "^11.2.3",

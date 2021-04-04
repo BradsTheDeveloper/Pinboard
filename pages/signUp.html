@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Pins - Login</title>
-    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <title>Pins - Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
   </head>
 
   <style>
     body {
-      background-image: url('src/night_logInPic.jpg');
+      background-image: url('../src/night_logInPic.jpg');
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: 100% 100%;
@@ -16,29 +16,60 @@
   </style>
 
   <body>
+    <script>
+      // defining functions
+      function goToHomescreen() {
+        location.href='./homescreen.html';
+      };
+      function UserIsLoggedIn() {
+        var isUserLoggedIn = true;
+        localStorage.isUserLoggedIn = isUserLoggedIn;
+      };
+      function AssignUsersName() {
+        var userProfile = firebase.auth().currentUser;
+
+        userProfile.updateProfile({
+          displayName: nameV
+        }).then(function() {
+          alert("Name updated")
+        }).catch(function(error) {
+          // An error happened.
+          alert("Name not updated")
+        });
+      };
+
+      var isUserLoggedIn = localStorage.isUserLoggedIn;
+
+      if(isUserLoggedIn == "true"){
+        goToHomescreen()
+      };
+    </script>
+
+    
 
     <script>
       
-      const customTitlebar = require('custom-electron-titlebar');
+      //const customTitlebar = require('custom-electron-titlebar');
 
-      new customTitlebar.Titlebar({
-        backgroundColor: customTitlebar.Color.fromHex('#000e36')
-      });
-
+      //new customTitlebar.Titlebar({
+      //  backgroundColor: customTitlebar.Color.fromHex('#000e36')
+      //});
+      
+    
     </script>
 
     <div class="verticalCentre">
       <h1 class="fadein leftPadding" style="line-height:20px;">Welcome to Pins</h1>
       <h2 class="fadein leftPadding" style="opacity:0;animation-delay:2s;animation-fill-mode:forwards;line-height:20px;">Log in or sign up to get started</p>
-      <button id="signUpScreenSelect">Sign Up</button>
-      <button class="buttonSelected">Login</button>
+      <button class="buttonSelected">Sign Up</button>
+      <button id="loginScreenSelect">Login</button>
       <br><br>
       <div class="fadein" style="opacity:0;line-height:20px;height:50px;width:50%;margin:0;animation-delay:3s;animation-fill-mode:forwards;">
-        <!--Name <br><br> <input id="namebox" type="text"></input> <br><br>-->
+        Name <br><br> <input id="namebox" type="text"></input> <br><br>
         Email <br><br> <input id="emailbox" type="text"></input> <br><br>
         Password <br><br> <input id="passwordbox" type="password"></input> <br><br>
 
-        <button id="login">Login</button>
+        <button id="signUp">Sign Up</button>
       </div>
     </div>
 
@@ -49,8 +80,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
 
     <script id="MainScript">
-      
-
         var firebaseConfig = {
           apiKey: "AIzaSyDpemDHTHP0p90J1Y7cPtP8VXh2hIBGq10",
           authDomain: "pinboard-f0e52.firebaseapp.com",
@@ -65,44 +94,35 @@
         var nameV, emailV, passwordV;
 
         function Ready(){
-            // nameV = document.getElementById('namebox').value
+            nameV = document.getElementById('namebox').value;
             emailV = document.getElementById('emailbox').value;
             passwordV = document.getElementById('passwordbox').value;
-
-            store.set('emailV', emailV);
-            store.set('passwordV', passwordV);
+            localStorage.emailV = emailV;
+            localStorage.passwordV = passwordV;
+            localStorage.nameV = nameV;
         }
 
-        document.getElementById('login').onclick = function(){
+        document.getElementById('signUp').onclick = function(){
             Ready();
-            firebase.auth().signInWithEmailAndPassword(emailV, passwordV)
-              .then((userCredential) => {
-                // Signed in
+            firebase.auth().createUserWithEmailAndPassword(emailV, passwordV)
+            .then((userCredential) => {
+                // Signed in 
                 var user = userCredential.user;
-                goToHomescreen()
+                AssignUsersName();
+                UserIsLoggedIn();
+                goToHomescreen();
                 // ...
-              })
-              .catch((error) => {
+            })
+            .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                wrongLoginDetails();
-              });
+                // ..
+            });
         }
 
-        document.getElementById('signUpScreenSelect').onclick = function(){
-          location.href='./signUp.html';
+        document.getElementById('loginScreenSelect').onclick = function(){
+          location.href='./login.html';
         }
-    </script>
-
-    <script>
-        function goToHomescreen() {
-        location.href='./homescreen.html';
-      }
-
-      function wrongLoginDetails() {
-        alert("Incorrect email and/or password. Please try again.");
-      }
-
     </script>
 
   </body>

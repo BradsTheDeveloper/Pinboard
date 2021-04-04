@@ -6,14 +6,16 @@ function createWindow () {
   var mainWindow = new BrowserWindow({
     width: 1000,
     height: 600,
-    titleBarStyle: "hidden",
+    // frame: false,
+    // delete when custom taskbar is finished
+    frame: true,
     webPreferences: {
       nodeIntegration: true
     }
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('signUp.html')
+  mainWindow.loadFile('./pages/signUp.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -47,3 +49,5 @@ app.on('activate', function () {
 const Parse = require('parse');
 const Store = require('electron-store');
 Store.initRenderer()
+
+
