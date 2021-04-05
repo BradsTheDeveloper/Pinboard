@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>FirestoreTest</h1>
+        <button id='addNote'>New Note</button>
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+
+        <script>
+            var firebaseConfig = {
+              apiKey: "AIzaSyDpemDHTHP0p90J1Y7cPtP8VXh2hIBGq10",
+              authDomain: "pinboard-f0e52.firebaseapp.com",
+              databaseURL: "https://pinboard-f0e52-default-rtdb.firebaseio.com",
+              projectId: "pinboard-f0e52",
+              storageBucket: "pinboard-f0e52.appspot.com",
+              messagingSenderId: "229860657808",
+              appId: "1:229860657808:web:dc46ed4fd37dc412202615",
+              measurementId: "G-H63H28GYP2"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            const db = firebase.firestore();
+
+            document.getElementById('addNote').onclick = function(){
+                db.collection("users").doc("demouser").collection("board1").doc("note2").set({
+                    noteContents: "test",
+                    noteTitle: "test"
+                })
+                .then((docRef) => {
+                    // console.log("Document written with ID: ", docRef.id);
+                    alert("Document added")
+                })
+                .catch((error) => {
+                    alert("Error adding document: ", error);
+                });
+            };
+        </script>
+
+        
+  
+    </body>
+</html>

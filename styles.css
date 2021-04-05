@@ -88,13 +88,37 @@ hr.rounded {
   background-color: rgb(255, 255, 255);
 }
 
-.bottomCorner{
+.bottomRightCorner{
   position:absolute;
   bottom: 10px;
+  right: 10px;
+}
+
+.topRightCorner{
+  position:absolute;
+  top: 10px;
   right: 10px;
 }
 
 .buttonSelected {
   background-color: rgb(24, 72, 204); 
   color: #ffffff; 
+}
+
+.newBoardButton {
+  background-color: rgb(72, 90, 108); 
+  color: rgb(150, 247, 253);
+  position:absolute;
+}
+
+.recentBoardsButton {
+  background-color: #ffffff;
+    border: 2px solid white;
+    border-radius: 100px;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Karla', serif;
 }
